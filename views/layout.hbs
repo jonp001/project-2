@@ -23,4 +23,16 @@
         {{/if}}
 
     </nav>
+
+
+    {{#if user}}
+    <div>
+        <h3> Welcome {{user.username}} </h3>
+    </div>
+    {{/if}}
+
+
+    {{{body}}}
    </body>
+
+   </html>
