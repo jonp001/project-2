@@ -15,6 +15,8 @@ const cors = require("cors");
 
 const FRONTEND_URL = process.env.ORIGIN || "http://localhost:3000";
 
+var flash = require('connect-flash');
+
 // Middleware configuration
 module.exports = (app) => {
   // Because this is a server that will accept requests from outside and it will be hosted ona server with a `proxy`, express needs to know that it should trust that setting.
@@ -27,6 +29,9 @@ module.exports = (app) => {
       origin: [FRONTEND_URL]
     })
   );
+
+//allows flash messages to function
+app.use(flash());
 
   // In development environment the app logs
   app.use(logger("dev"));

@@ -24,7 +24,19 @@
 
     </nav>
 
+   {{#if errorMessage}}
+    <div style= "background-color: #d13838">
+      {{errorMessage}}
+    </div>
+   {{/if}}
 
+    {{#if successMessage}}
+     <div style="background-color: #42f557">
+      {{successMessage}}
+     </div>
+    {{/if}}
+
+    
     {{#if user}}
     <div>
         <h3> Welcome {{user.username}} </h3>
