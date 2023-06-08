@@ -2,7 +2,7 @@ const mongoose= require("mongoose");
 
 const { Schema, model } = require("mongoose");
 
-// TODO: Please make sure you edit the User model to whatever makes sense in this case
+
 const userSchema = new Schema(
   {
     avatar: {
@@ -51,7 +51,9 @@ const userSchema = new Schema(
     
     biography: {
       type: String
-    }
+    },
+    Admin: {type: Boolean, default: false},
+    active: {type: Boolean, default: false}
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`    

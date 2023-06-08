@@ -11,3 +11,11 @@
         </a>
     </div>
     {{/each}}
+
+{{#each theUser.accessories}}
+    <div>
+        <a href="/accessory/{{this._id}}">
+        {{this.name}}
+        </a>
+    </div>
+    {{/each}}

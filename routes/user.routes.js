@@ -88,12 +88,26 @@ router.post("/login", (req, res, next) => {
     })
   })
 
+  router.get("/see-users", (req, res, next) => {
+    if(!(req.session.currentUser && req.session.currentUser.Admin)){
+      res.redirect("/");
+      return;
+    }
+    User.find()
+    .then((allUsers) => {
+      res.render("users/all-users", {users: allUsers})
+    }).catch((error) => next(error))
+  })
 
-
-
-
-
-
-
+  router.post("/delete-user", (req, res, next) => {
+    if(!(req.session.currentUser && req.session.currentUser.Admin)) {
+      res.redirect("/");
+      return;
+    }
+    User.findByIdAndRemove(req.body.theUserID)
+    .then(() => {
+      res.redirect("/see-users")
+    }) .catch((error) => next(error))
+  })
 
 module.exports= router;
