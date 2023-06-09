@@ -36,17 +36,17 @@ const userSchema = new Schema(
 
     favoriteAccesory: {
       type: [mongoose.Types.ObjectId],
-      ref: "Bicycle"
+      ref: "Accessory"
     },
 
     sellingBicycle: {
       type: [mongoose.Types.ObjectId],
-      ref: "Accessory"
+      ref: "Bicycle"
     },
 
     sellingAccesory: {
       type: [mongoose.Types.ObjectId],
-      ref: "Accesory"
+      ref: "Accessory"
     },
     
     biography: {

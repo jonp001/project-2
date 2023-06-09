@@ -1,4 +1,19 @@
+nav{
+    padding: 10px;
+    background-color: darkorange;
+  
+}
+
 body{
     padding: 20px;
-    font:  12px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font:  15px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: bisque;
 }
+
+a{
+    color: grey;
+    padding: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+

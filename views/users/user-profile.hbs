@@ -2,20 +2,42 @@
 
 <div> Welcome, {{theUser.username}} </div>
 
-<h3> Bicycles </h3>
+<h3> Favorite Bicycles </h3>
 
-{{#each theUser.bicycles}}
+{{#each theUser.favoriteBicycle}}
     <div>
-        <a href=" /bicycle/{{this._id}}">
+        <a href="/bicycles/{{this._id}}">
             {{this.name}}
         </a>
     </div>
     {{/each}}
 
-{{#each theUser.accessories}}
+<h3> Favorite Accessories</h3>
+
+{{#each theUser.favoriteAccessory}}
     <div>
-        <a href="/accessory/{{this._id}}">
+        <a href="/accessories/{{this._id}}">
         {{this.name}}
         </a>
     </div>
     {{/each}}
+
+<h3> Bicycles for Sale</h3>
+
+{{#each theUser.sellingBicycle}}
+<div>
+    <a href="/bicycles/{{this._id}}">
+    {{this.name}}
+    </a>
+</div>
+{{/each}}
+
+<h3> Accessories for Sale</h3>
+
+{{#each theUser.sellingAccessory}}
+<div>
+    <a href="/accessories/{{this._id}}">
+    {{this.name}}
+    </a>
+</div>
+{{/each}}

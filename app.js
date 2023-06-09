@@ -23,6 +23,8 @@ const hbs = require('hbs');
 
 const app = express();
 
+app.use(express.static('public'));
+
 //set view engine to hbs
 app.set('view engine', 'hbs');
 
@@ -79,6 +81,8 @@ app.use("/", indexRoutes);
 const userRoutes= require("./routes/User.routes")
 app.use("/", userRoutes);
 
+const bicycleRoutes= require("./routes/bicycle.routes")
+app.use("/", bicycleRoutes);
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 
