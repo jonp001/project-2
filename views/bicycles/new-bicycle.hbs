@@ -1,0 +1,45 @@
+<h1> Add a Bicycle to the Marketplace!</h1>
+
+
+<form action="/bicycles/create" method="POST" enctype="multipart/form-data">
+
+
+<div>
+    Image: 
+    <input type="file" name="img">
+</div>
+
+<div> 
+   Title:  
+    <input type="text" name="bicycleTitle">
+</div>
+
+<div>
+    Year: 
+    <input type="number" name="bicycleYear">
+</div>
+
+<div>
+    Brand:
+    <input type="text" name="bicycleBrand">
+</div>
+
+<div>
+    Model:
+    <input type="text" name="bicycleModel">
+</div>
+
+<div>
+   
+<label for="description">Description:</label>
+<textarea id="description" name="bicycleDescription">{{description}}</textarea>
+</div>
+
+<div>
+    Price:
+    <input type="number" name="Price">
+</div>
+
+<button>Save</button>
+
+</form>"
