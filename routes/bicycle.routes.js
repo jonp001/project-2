@@ -38,4 +38,14 @@ router.get("/bicycles", (req, res, next) => {
 })
 
 
+router.get("/bicycles/:id", (req, res, next) => {
+    const theID= req. params.id;
+    Bicycle.findById(theID)
+   .then((theBicycle) => {
+    res.render("bicycles/bicycle-details", {bicycle: theBicycle})
+   })
+   .catch((error) => next(error));
+});
+
+
 module.exports= router
