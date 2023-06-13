@@ -8,3 +8,11 @@
 <p>Description: {{bicycle.description}}</p>
 
 
+<form action ="/bicycles/{{bicycle._id}}/favorited" method="POST">
+<button type="submit">Favorite Bicycle</button>
+</form>
+
+<form action="/bicycles/{{bicycle._id}}/unfavorite" method="POST">
+<button type="submit">Unfavorite Bicycle</button>
+</form>
+
