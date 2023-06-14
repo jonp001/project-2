@@ -16,3 +16,22 @@
 <button type="submit">Unfavorite Bicycle</button>
 </form>
 
+{{#if bicycle.seller}}
+<a href="/bicycles/{{bicycle._id}}/edit"> Edit This Bicycle</a>
+
+<br>
+
+<form action="/bicycles/{{bicycle._id}}/delete" method="POST">
+    <button>Delete this Bicycle</button>
+</form>
+{{/if}}
+
+{{#if isAdmin}}
+<a href="/bicycles/{{bicycle._id}}/edit"> Edit This Bicycle</a>
+
+<br>
+
+<form action="/bicycles/{{bicycle._id}}/delete" method="POST">
+    <button>Delete this Bicycle</button>
+</form>
+{{/if}}
