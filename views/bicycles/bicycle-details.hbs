@@ -7,31 +7,40 @@
 <p>Price: {{bicycle.price}}</p>
 <p>Description: {{bicycle.description}}</p>
 
-
+<div class ="favorite-button-container">
 <form action ="/bicycles/{{bicycle._id}}/favorited" method="POST">
 <button type="submit">Favorite Bicycle</button>
 </form>
 
+
+
 <form action="/bicycles/{{bicycle._id}}/unfavorite" method="POST">
-<button type="submit">Unfavorite Bicycle</button>
+<button id="unfavorite" type="submit">Unfavorite Bicycle</button>
 </form>
+</div>
+
+<br> 
 
 {{#if bicycle.seller}}
-<a href="/bicycles/{{bicycle._id}}/edit"> Edit This Bicycle</a>
+<div class="button-modify-container">
+<a href="/bicycles/{{bicycle._id}}/edit" class="button">Edit This Bicycle</a>
 
 <br>
 
 <form action="/bicycles/{{bicycle._id}}/delete" method="POST">
     <button>Delete this Bicycle</button>
 </form>
+
 {{/if}}
 
 {{#if isAdmin}}
-<a href="/bicycles/{{bicycle._id}}/edit"> Edit This Bicycle</a>
+<a href="/bicycles/{{bicycle._id}}/edit" class="button">Edit This Bicycle</a>
+<button>Edit This Bicycle</button>
 
 <br>
 
 <form action="/bicycles/{{bicycle._id}}/delete" method="POST">
     <button>Delete this Bicycle</button>
 </form>
+</div>
 {{/if}}
