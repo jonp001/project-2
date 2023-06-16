@@ -1,0 +1,43 @@
+<h1>{{accessory.title}}</h1>
+
+<img src="{{accessory.img}}" style="width: 900px" alt=" accessoryImg">
+<p> Title: {{accessory.title}}</p>
+<p>Description: {{accessory.description}}</p>
+<p>Price: {{accessory.price}}</p>
+
+<div class "favorite-button-container">
+<form action="/accessories/{{accessory._id}}/favorited" method="POST">
+<button type="submit">Favorite Accessory</button>
+</form>
+
+
+<form action="/accessories/{{accessory._id}}/unfavorite" method="POST">
+<button id="unfavorite" type="submit"> Unfavorite Accessory</button>
+</form>
+</div>
+
+<br>
+
+{{#if accessory.seller}}
+<div class="button-modify-container">
+<a href="/accessories/{{accessory._id}}/edit" class="button">Edit This Accessory</a>
+
+<br>
+
+<form action="/accessories/{{accessory._id}}/delete" method="POST">
+    <button>Delete This Accessory</button>
+</form>
+
+{{/if}}
+
+{{#if isAdmin}}
+<a href="/accessories/{{accessory._id}}/edit" class="button">Edit This Accessory</a>
+<button>Edit This Accessory</button>
+
+<br>
+
+<form action="/accessories/{{accessory._id}}/delete" method="POST">
+    <button>Delete This Accessory</button>
+</form>
+</div>
+{{/if}}
