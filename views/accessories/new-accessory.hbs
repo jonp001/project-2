@@ -1,0 +1,30 @@
+<h1> Add an Accessory to the Marketplace</h1>
+
+
+<form action="/accessories/create" method="POST" enctype="multipart/form-data">
+
+
+<div>
+    Image: 
+    <input type="file" name="img">
+</div>
+
+<div>
+    Title:
+    <input type="text" name="accessoryTitle">
+</div>
+
+<div>
+   
+<label for="description">Description:</label>
+<textarea id="description" name="accessoryDescription">{{description}}</textarea>
+</div>
+
+<div>
+    Price: 
+    <input type="number" name="price">
+</div>
+
+<button>Save</button>
+
+</form>

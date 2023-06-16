@@ -1,0 +1,19 @@
+<h1> Accessories</h1>
+
+{{#each accessories}}
+    <hr>
+    <div>
+
+
+    <a href="/accessories/{{this._id}}">
+    <h2>
+        <li>
+            {{this.title}}
+        </li>
+    </h2>
+    </a>
+    <h5> Title: {{this.title}}</h5>
+    <h5> Price: {{this.price}}</h5>
+    </div>
+    <hr>
+    {{/each}}

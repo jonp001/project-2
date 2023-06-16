@@ -83,6 +83,9 @@ app.use("/", userRoutes);
 
 const bicycleRoutes= require("./routes/bicycle.routes")
 app.use("/", bicycleRoutes);
+
+const accessoryRoutes= require("./routes/accessory.routes")
+app.use("/", accessoryRoutes);
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 
