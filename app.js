@@ -40,8 +40,6 @@ const capitalized = string => string[0].toUpperCase() + string.slice(1).toLowerC
 
 app.locals.title= `${capitalized(projectName)} created with IronLauncher`;
 
-
-
 app.set('trust proxy', 1);
   app.use(
     session({
@@ -55,7 +53,8 @@ app.set('trust proxy', 1);
         maxAge: 60000
       }, // ADDED code below !!!
       store: MongoStore.create({
-        mongoUrl: 'mongodb://0.0.0.0:27017/bicycle-marketplace'
+        mongoUrl: process.env.MONGODB_URI 
+        
  
         // ttl => time to live
         // ttl: 60 * 60 * 24 // 60sec * 60min * 24h => 1 day
@@ -78,7 +77,7 @@ app.use((req, res, next) => {
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
 
-const userRoutes= require("./routes/User.routes")
+const userRoutes= require("./routes/user.routes")
 app.use("/", userRoutes);
 
 const bicycleRoutes= require("./routes/bicycle.routes")
