@@ -7,7 +7,7 @@ const accessorySchema= new Schema({
     title: String,
     img: String,
     description: String,
-    price: String,
+    price: Number,
     favorited: {type: Boolean, default: false},
     selling: {type: Boolean, default: false}
 });

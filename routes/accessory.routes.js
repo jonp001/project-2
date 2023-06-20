@@ -16,7 +16,7 @@ router.post ("/accessories/create", isLoggedIn, uploader.single("img"), (req, re
         img: req.file.path,
         title: req.body.accessoryTitle,
         description: req.body.accessoryDescription,
-        price: req.body.price,
+        price: req.body.accessoryPrice,
     }).then ((response) => {
         req.flash("success", "Accessory Successfully Listed");
         res.redirect("/accessories")
@@ -123,7 +123,7 @@ router.post("/accessories/:id/update", isLoggedIn, uploader.single("img"), (req,
     const updatedAccessoryData= {
         title: req.body.accessoryTitle,
         description: req.body.accessoryDescription,
-        price: req.body.price,
+        price: req.body.accessoryPrice,
     };
 
     if(req.file) {
