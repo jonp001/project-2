@@ -10,8 +10,8 @@ const bikeSchema= new Schema ({
     brand: String,
     model: String,
     year: Number,
-    price: Number,
     description: String,
+    price: Number,
     favorited: {type: Boolean, default: false},
     selling: {type: Boolean, default: false}
 });

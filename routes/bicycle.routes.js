@@ -13,6 +13,7 @@ router.get("/bicycles/new", isLoggedIn, (req, res, next) => {
 router.post ("/bicycles/create", isLoggedIn, uploader.single("img"), (req, res, next) => {
     console.log(req.body)
     Bicycle.create({
+        
         seller: req.session.currentUser._id,
         img: req.file.path,
         title: req.body.bicycleTitle,
@@ -79,6 +80,7 @@ router.get("/bicycles/:id", (req, res, next) => {
     Bicycle.findById(theID)
     .populate('seller')
     .then((theBicycle) => {
+        console.log(theBicycle);
         const isSeller = req.session.currentUser && String(theBicycle.seller) === req.session.currentUser._id;
         const isAdmin = req.session.currentUser && req.session.currentUser.isAdmin;
 
