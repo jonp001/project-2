@@ -11,6 +11,7 @@ router.get("/bicycles/new", isLoggedIn, (req, res, next) => {
 });
 
 router.post ("/bicycles/create", isLoggedIn, uploader.single("img"), (req, res, next) => {
+    console.log(req.body)
     Bicycle.create({
         seller: req.session.currentUser._id,
         img: req.file.path,
@@ -19,7 +20,7 @@ router.post ("/bicycles/create", isLoggedIn, uploader.single("img"), (req, res, 
         brand: req.body.bicycleBrand,
         model: req.body.bicycleModel,
         description: req.body.bicycleDescription,
-        price: req.body.price,
+        price: req.body.bicyclePrice,
     }).then((response) => {
         req.flash("success", "Bicycle Successfully Listed");
         res.redirect("/bicycles");
@@ -129,7 +130,7 @@ router.post("/bicycles/:id/update", isLoggedIn, uploader.single("img"), (req, re
         brand: req.body.bicycleBrand,
         model: req.body.bicycleModel,
         description: req.body.bicycleDescription,
-        price: req.body.price,
+        price: req.body.bicyclePrice,
     };
 
     if (req.file) {
