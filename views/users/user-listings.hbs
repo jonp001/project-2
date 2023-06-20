@@ -1,0 +1,22 @@
+
+<h1> {{this.user}}'s Listings</h1>
+
+<h2> Bicycles</h2>
+<ul>
+{{#each bicycles}}
+    <li>
+        <a href="/bicycles/{{this._id}}">{{this.title}}</a>
+        <p>{{this.price}}</p>
+    </li>
+    {{/each}}
+    </ul>
+
+    <h2> Accessories</h2>
+    <ul>
+    {{#each accessories}}
+        <li>
+           <a href="/accessories/{{this._id}}">{{this.title}}</a>
+            <p>{{this.price}}</p>
+        </li>
+    {{/each}}
+    </ul>

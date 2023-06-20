@@ -5,6 +5,11 @@ const { Schema, model } = require("mongoose");
 
 const userSchema = new Schema(
   {
+    seller: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+    }, 
+    
     avatar: {
       img: String,
     },

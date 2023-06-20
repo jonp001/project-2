@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const User= require("../models/User.model");
+const Bicycle = require('../models/Bicycle.model');
+const Accessory = require('../models/Accessory.model');
 const bcryptjs= require("bcryptjs");
 const mongoose= require("mongoose");
 const isLoggedIn = require("../utils/isLoggedIn");
@@ -164,5 +166,14 @@ router.get('/user-profile', isLoggedIn, async (req, res, next) => {
     .catch((error) => next(error));
 });
 
-
+router.get('/users/:userId/listings', isLoggedIn, async (req, res, next) => {
+  const { userId } = req.params;
+  try {
+    const bicycles = await Bicycle.find({ seller: userId });
+    const accessories = await Accessory.find({ seller: userId });
+    res.render('users/user-listings', { bicycles, accessories });
+  } catch (error) {
+    next(error);
+  }
+});
 module.exports= router;
