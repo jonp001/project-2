@@ -6,6 +6,7 @@
 <p>Year: {{bicycle.year}}</p>
 <p>Price: {{bicycle.price}}</p>
 <p>Description: {{bicycle.description}}</p>
+<p>Seller: {{bicycle.seller.username}}</p>
 
 <div class ="favorite-button-container">
 <form action ="/bicycles/{{bicycle._id}}/favorited" method="POST">

@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 
 const bikeSchema= new Schema ({
-    seller: { type: Schema.Types.ObjectId, ref: 'User' },
+    seller: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     title: String,
     img: String,
     brand: String,

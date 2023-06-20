@@ -2,8 +2,9 @@
 
 <img src="{{accessory.img}}" style="width: 900px" alt=" accessoryImg">
 <p> Title: {{accessory.title}}</p>
-<p>Description: {{accessory.description}}</p>
 <p>Price: {{accessory.price}}</p>
+<p>Description: {{accessory.description}}</p>
+<p>Seller: {{accessory.seller.username}}</p>
 
 <div class "favorite-button-container">
 <form action="/accessories/{{accessory._id}}/favorited" method="POST">

@@ -76,6 +76,7 @@ router.post("/bicycles/:id/unfavorite", isLoggedIn, (req, res, next) => {
 router.get("/bicycles/:id", (req, res, next) => {
     const theID= req.params.id;
     Bicycle.findById(theID)
+    .populate('seller')
     .then((theBicycle) => {
         const isSeller = req.session.currentUser && String(theBicycle.seller) === req.session.currentUser._id;
         const isAdmin = req.session.currentUser && req.session.currentUser.isAdmin;

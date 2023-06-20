@@ -53,7 +53,7 @@ app.set('trust proxy', 1);
         maxAge: 60000
       }, // ADDED code below !!!
       store: MongoStore.create({
-        mongoUrl: process.env.MONGODB_URI 
+        mongoUrl: "mongodb+srv://jonperez01:29qGAdxUcvpwQRht@cluster-project-2.mjwoznv.mongodb.net/?retryWrites=true&w=majority"
         
  
         // ttl => time to live

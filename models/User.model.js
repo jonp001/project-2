@@ -33,7 +33,7 @@ const userSchema = new Schema(
       type: [mongoose.Types.ObjectId],
       ref: "Bicycle"
     },
-
+   
     favoriteAccessory: {
       type: [mongoose.Types.ObjectId],
       ref: "Accessory"

@@ -74,6 +74,7 @@ router.post("/accessories/:id/unfavorite", isLoggedIn, (req, res, next) => {
 router.get("/accessories/:id", (req, res, next) => {
     const theID= req.params.id;
     Accessory.findById(theID)
+    .populate('seller')
     .then((theAccessory) => {
         const isSeller= req.session.currentUser && String(theAccessory.seller) === req.session.currentUser._id;
         const isAdmin= req.session.currentUser && req.session.currentUser.isAdmin;

@@ -1,26 +1,7 @@
 <h1> User Profile</h1>
 
-<div> Welcome, {{theUser.username}} </div>
+<div> {{theUser.username}} </div>
 
-<h3> Favorite Bicycles </h3>
-
-{{#each theUser.favoriteBicycle}}
-    <div>
-        <a href="/bicycles/{{this._id}}">
-            {{this.name}}
-        </a>
-    </div>
-    {{/each}}
-
-<h3> Favorite Accessories</h3>
-
-{{#each theUser.favoriteAccessory}}
-    <div>
-        <a href="/accessories/{{this._id}}">
-        {{this.name}}
-        </a>
-    </div>
-    {{/each}}
 
 <h3> Bicycles for Sale</h3>
 
