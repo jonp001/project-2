@@ -169,9 +169,10 @@ router.get('/user-profile', isLoggedIn, async (req, res, next) => {
 router.get('/users/:userId/listings', isLoggedIn, async (req, res, next) => {
   const { userId } = req.params;
   try {
+    const user = await User.findById(userId);
     const bicycles = await Bicycle.find({ seller: userId });
     const accessories = await Accessory.find({ seller: userId });
-    res.render('users/user-listings', { bicycles, accessories });
+    res.render('users/user-listings', { user, bicycles, accessories });
   } catch (error) {
     next(error);
   }
