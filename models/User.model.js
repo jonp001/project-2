@@ -33,30 +33,10 @@ const userSchema = new Schema(
       type: String,
       required: true
     },
-    
-    favoriteBicycle: {
-      type: [mongoose.Types.ObjectId],
-      ref: "Bicycle"
-    },
-   
-    favoriteAccessory: {
-      type: [mongoose.Types.ObjectId],
-      ref: "Accessory"
-    },
-
-    sellingBicycle: {
-      type: [mongoose.Types.ObjectId],
-      ref: "Bicycle"
-    },
-
-    sellingAccessory: {
-      type: [mongoose.Types.ObjectId],
-      ref: "Accessory"
-    },
-    
-    biography: {
-      type: String
-    },
+    chats: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Chat"
+    }],
     Admin: {type: Boolean, default: false},
     active: {type: Boolean, default: false}
   },

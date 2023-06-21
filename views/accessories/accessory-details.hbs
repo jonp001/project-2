@@ -6,7 +6,7 @@
 <p>Description: {{accessory.description}}</p>
 <p>Seller: <a href="/users/{{accessory.seller._id}}/listings">{{accessory.seller.username}}</a></p>
 
-<div class "favorite-button-container">
+<div class="favorite-button-container">
 <form action="/accessories/{{accessory._id}}/favorited" method="POST">
 <button type="submit">Favorite Accessory</button>
 </form>

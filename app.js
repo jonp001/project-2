@@ -50,7 +50,7 @@ app.set('trust proxy', 1);
         sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
         secure: process.env.NODE_ENV === 'production',
         httpOnly: true,
-        maxAge: 60000
+        maxAge: 600000
       }, // ADDED code below !!!
       store: MongoStore.create({
         mongoUrl: "mongodb+srv://jonperez01:29qGAdxUcvpwQRht@cluster-project-2.mjwoznv.mongodb.net/?retryWrites=true&w=majority"
@@ -85,6 +85,9 @@ app.use("/", bicycleRoutes);
 
 const accessoryRoutes= require("./routes/accessory.routes")
 app.use("/", accessoryRoutes);
+
+const chatRoutes= require("./routes/chat.routes")
+app.use("/", chatRoutes);
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 

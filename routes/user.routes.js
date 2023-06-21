@@ -112,60 +112,6 @@ router.post("/login", (req, res, next) => {
     }) .catch((error) => next(error))
   });
 
-  router.put("/users/:userId/favorites/bicycles/:bicycleId", async( req, res, next) => {
-    const {userId, bicycleId} = req.params;
-    const user= await User.findById(userId);
-    user.favoriteBicycle.push(bicycleId);
-    await user.save();
-    res.redirect("/user-profile")
-  });
-
-  router.put("/users/:userId/favorites/accessories/:accessoryId", async(req, res, next) => {
-    const {userId, accessoryId} = req.params;
-    const user= await User.findById(userId);
-    user.favoriteAccessory.push(accessoryId);
-    await user.save();
-    res.redirect("/user-profile")
-  })
-
- router.get("/user-profile", isLoggedIn, async (req, res, next) => {
-  User.findById(req.session.currentUser._id)
-  .populate("favoriteBicycle")
-  .populate("favoriteAccessory")
-  .then((theUser) => {
-    res.render("users/user-profile", {theUser: theUser})
-  })
-  .catch((error) => {next((error))
-  })
-})
-
-router.put("/users/:userId/selling/bicycles/:bicycleId", async(req, res, next) => {
-  const { userId, bicycleId } = req.params;
-  const user = await User.findById(userId);
-  user.sellingBicycle.push(bicycleId);
-  await user.save();
-  res.redirect("/user-profile");
-});
-
-router.put('/users/:userId/selling/accessories/:accessoryId', async (req, res, next) => {
-  const { userId, accessoryId } = req.params;
-  const user = await User.findById(userId);
-  user.sellingAccesory.push(accessoryId);
-  await user.save();
-  res.redirect("/user-profile");
-
-});
-
-router.get('/user-profile', isLoggedIn, async (req, res, next) => {
-  User.findById(req.session.currentUser._id)
-    .populate('sellingBicycle')
-    .populate('sellingAccesory')
-    .then((theUser) => {
-      res.render('users/user-profile', {theUser: theUser});
-    })
-    .catch((error) => next(error));
-});
-
 router.get('/users/:userId/listings', isLoggedIn, async (req, res, next) => {
   const { userId } = req.params;
   try {
@@ -177,4 +123,5 @@ router.get('/users/:userId/listings', isLoggedIn, async (req, res, next) => {
     next(error);
   }
 });
+
 module.exports= router;
