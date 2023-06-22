@@ -20,9 +20,10 @@
             <br>
             <a href="/bicycles/new"> Add Bicycle listing</a>
             <a href="/accessories/new"> Add Accessory listing</a>
+            <a href="/chats/inbox"> Inbox</a>
         {{/if}}
         <a href="/signup"> Sign up</a>
-        {{#if user}}
+         {{#if user}}
             <form style="display:inline" action="/logout" method ="POST"><button> Logout</button></form>
         {{else}}
             <a href="/login">Login </a>

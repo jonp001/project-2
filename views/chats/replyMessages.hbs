@@ -1,0 +1,9 @@
+
+
+
+<form action="/chats/{{chat._id}}/messages" method="POST">
+    <input type="hidden" name="senderId" value="{{user._id}}">
+    <p>To: {{chat.users.[0].username}}</p>
+    <textarea name="message" required></textarea>
+    <button type="submit">Send</button>
+</form>

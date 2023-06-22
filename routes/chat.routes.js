@@ -30,7 +30,7 @@ router.post("/users/:id/chats", async (req, res, next) => {
         await recipient.save();
 
 
-        res.redirect("/inbox");
+        res.redirect("/chats/inbox");
     } catch(error) {
         next(error);
     }
@@ -51,11 +51,78 @@ router.post("/chats/:id/messages", async (req, res, next) => {
 
         await chat.save();
 
-        res.redirect("/inbox/" + id);
+        res.redirect("chats/inbox/" + id);
     } catch(error){
         next(error)
     }
 });
 
+router.get("/chats/inbox", isLoggedIn, async (req, res, next) => {
+    try {
+        const user= await User.findById(req.session.currentUser._id).populate({
+            path:"chats",
+            populate: {
+                path: "messages.sender",
+                model: "User"
+            }
+        });
+
+        console.log(user);
+
+        const inboxChats= user.chats.filter(chat => {
+            if(chat.messages.length >0) {
+            const lastMessage= chat.messages[chat.messages.length - 1];
+            if (lastMessage && lastMessage.sender) { 
+                return !lastMessage.sender._id.equals(user._id);
+            }
+        }
+        return false;
+    });
+
+        res.render("chats/inbox", { chats: inboxChats });
+    } catch(error) {
+        next(error);
+    }
+});
+
+
+router.get("/sent", isLoggedIn, async (req, res, next) => {
+    try{
+        const user= await User.findById(req.session.currentUser._id).populate({
+            path: "chats",
+            populate: {
+                path: "messages.sender",
+                model: "User"
+            }
+        });
+        const sentChats= user.chats.filter(chat => {
+            if(chat.messages.length >0) {
+            const lastMessage= chat.messages[chat.messages.length -1];
+            return lastMessage.sender._id.equals(user._id);
+            }
+            return false;
+        });
+
+        res.render("chats/sentMessages", { chats: sentChats });
+    } catch(error) {
+        next(error);
+    }
+});
+
+
+router.get("/chats/new", isLoggedIn, async (req, res) => {
+    const users = await User.find({ _id: { $ne: req.session.currentUser._id } }); // get all users excluding the current user
+    res.render("chats/message", { users });
+});
+
+
+router.get("/inbox/:id", isLoggedIn, async (req, res, next) => {
+    try {
+        const chat= await Chat.findById(req.params.id).populate("messages.sender")
+        res.render("chats/messageDetails", { chat });
+    } catch(error) {
+        next(error);
+       }
+});
 
 module.exports= router;

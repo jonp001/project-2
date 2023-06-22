@@ -1,0 +1,9 @@
+<ul>
+    {{#each chats}}
+    <li>
+        <h2>To: {{this.users.[1].username}}</h2> 
+        <p> {{this.messages.[0].message}}</p>
+        <a href="/inbox/{{this._id}}">View Conversation</a>
+    </li>
+    {{/each}}
+</ul>

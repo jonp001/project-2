@@ -1,0 +1,15 @@
+<h1> {{user.username}}'s Inbox</h1>
+
+<a href="/chats/new" class="compose-button">Compose a Message</a>
+
+<ul>
+    {{#each chats}}
+    
+    <li>
+        <h2> From: {{this.messages.[0].sender.username}}</h2>
+        <p> {{this.messages.[0].message}}</p>
+        <p> Sent: {{this.messages.[0].timestamp}}</p>
+        <a href="/inbox/{{this._id}}"> View Conversation</a>
+    </li>
+    {{/each}}
+</ul>
