@@ -1,8 +1,9 @@
 <ul>
     {{#each chats}}
     <li>
-        <h2>To: {{this.users.[1].username}}</h2> 
+        <h2>To: {{this.recipient.username}}</h2> 
         <p> {{this.messages.[0].message}}</p>
+        <p> Sent: {{this.messages.[0].timestamp}}</p>
         <a href="/inbox/{{this._id}}">View Conversation</a>
     </li>
     {{/each}}

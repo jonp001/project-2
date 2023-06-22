@@ -1,6 +1,12 @@
 
 
-<h2> From: {{chat.users[0].username}}</h2>
-<h2>To: {{chat.users.[1],username}}</h2>
-<p>Sent: {{chat.messages.[0].timestamp}}</p>
+
+{{#each chat.messages}}
+    <div>
+        <h3>From: {{this.sender.username}}</h3>
+        <p>Message: {{this.message}}</p>
+        <p>Sent: {{this.timestamp}}</p>
+    </div>
+{{/each}}
+
 <a href="/chats/{{chat._id}}/messages">Reply</a>

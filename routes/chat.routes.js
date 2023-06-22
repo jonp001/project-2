@@ -57,6 +57,16 @@ router.post("/chats/:id/messages", async (req, res, next) => {
     }
 });
 
+router.get("/chats/:id/messages", isLoggedIn, async (req, res, next) => {
+    try {
+        const chat= await Chat.findById(req.params.id).populate("messages.sender")
+        const users = await User.find({ _id: { $ne: req.session.currentUser._id } }); // get all users excluding the current user
+        res.render("chats/message", { chat, users });
+    } catch(error) {
+        next(error);
+    }
+});
+
 router.get("/chats/inbox", isLoggedIn, async (req, res, next) => {
     try {
         const user= await User.findById(req.session.currentUser._id).populate({
@@ -90,10 +100,10 @@ router.get("/sent", isLoggedIn, async (req, res, next) => {
     try{
         const user= await User.findById(req.session.currentUser._id).populate({
             path: "chats",
-            populate: {
-                path: "messages.sender",
-                model: "User"
-            }
+            populate: [
+                { path: "messages.sender", model: "User" },
+                { path: "users", model: "User" }
+              ]
         });
         const sentChats= user.chats.filter(chat => {
             if(chat.messages.length >0) {
@@ -102,8 +112,12 @@ router.get("/sent", isLoggedIn, async (req, res, next) => {
             }
             return false;
         });
+        const chatWithRecipient = sentChats.map(chat => { 
+            const recipient = chat.users.find(u => !u._id.equals(user._id));
+            return {...chat._doc, recipient}; //this allows  you to find the receipent the message was sent too
+        });
 
-        res.render("chats/sentMessages", { chats: sentChats });
+        res.render("chats/sentMessages", { chats: chatWithRecipient });
     } catch(error) {
         next(error);
     }
