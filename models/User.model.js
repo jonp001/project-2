@@ -33,6 +33,28 @@ const userSchema = new Schema(
       type: String,
       required: true
     },
+
+        
+    favoriteBicycle: {
+      type: [mongoose.Types.ObjectId],
+      ref: "Bicycle"
+    },
+
+    favoriteAccesory: {
+      type: [mongoose.Types.ObjectId],
+      ref: "Accessory"
+    },
+
+    sellingBicycle: {
+      type: [mongoose.Types.ObjectId],
+      ref: "Bicycle"
+    },
+
+    sellingAccesory: {
+      type: [mongoose.Types.ObjectId],
+      ref: "Accessory"
+    },
+    
     chats: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: "Chat"

@@ -1,17 +1,18 @@
+
 nav{
     padding: 10px;
-    background-color: darkorange;
+    background-color: #a3a97d;
   
 }
 
 body{
     padding: 20px;
     font:  15px "Lucida Grande", Helvetica, Arial, sans-serif;
-    background-color: bisque;
+    background-color: lightgrey
 }
 
 a{
-    color: grey;
+    color: black;
     padding: 10px;
     flex-direction: row;
     justify-content: space-between;
