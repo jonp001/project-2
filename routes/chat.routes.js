@@ -3,12 +3,15 @@ const router= express.Router();
 const User= require("../models/User.model");
 const Chat= require("../models/Chat.model");
 isLoggedIn= require("../utils/isLoggedIn");
+const axios= require("axios");
 
 
 router.post("/users/:id/chats", async (req, res, next) => {
 
     const {id}= req.params; 
     const {recipientId, message} = req.body;
+    
+
 
     try{
         const chat= new Chat({
@@ -29,6 +32,49 @@ router.post("/users/:id/chats", async (req, res, next) => {
         recipient.chats.push(chat._id);
         await recipient.save();
 
+        const recipientEmail= recipient.email;
+    
+    //copy & pasted from rapidapi site to set up email notifications
+
+    const options = {
+        method: 'POST',
+        url: 'https://rapidprod-sendgrid-v1.p.rapidapi.com/mail/send',
+        headers: {
+          'content-type': 'application/json',
+          'X-RapidAPI-Key': process.env.RAPIDAPIKEY,
+          'X-RapidAPI-Host': 'rapidprod-sendgrid-v1.p.rapidapi.com'
+        },
+        data: {
+          personalizations: [
+            {
+              to: [
+                {
+                    
+                  email: recipientEmail
+                }
+              ],
+              subject: 'New Message Recieved'
+            }
+          ],
+          from: {
+            email: 'noreply@bicycle-marketplace.co'
+          },
+          content: [
+            {
+              type: 'text/html',
+              value: `<h3>You have recieved a new message</h3>.
+              <p>Please click <a href="https://bicycle-marketplace.fly.dev/chats/inbox"here</a> to view your inbox</p>`
+            }
+          ]
+        }
+      };
+      
+      try {
+          const response = await axios.request(options);
+          console.log(response.data);
+      } catch (error) {
+          console.error(error);
+      }
 
         res.redirect("/chats/inbox");
     } catch(error) {
