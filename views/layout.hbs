@@ -24,9 +24,11 @@
             <a href="/sent">Outbox</a>
             
         {{/if}}
-        <a href="/signup"> Sign up</a>
+        <a href ="/signup"> Sign up</a>
          {{#if user}}
-            <form style="display:inline" action="/logout" method ="POST"><button> Logout</button></form>
+        
+            <form style="display:inline" action="/logout" method ="POST"><button id="logoutButton"> Logout</button></form>
+
         {{else}}
             <a href="/login">Login </a>
         {{/if}}

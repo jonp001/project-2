@@ -1,3 +1,4 @@
+    <div class="newmessage-container">
     <form action="/users/{{user._id}}/chats" method="post">
         <label for="recipientId">Recipient:</label>
         <select id="recipientId" name="recipientId" required>
@@ -8,4 +9,5 @@
         <label for="message">Message:</label>
         <textarea id="message" name="message" required></textarea><br>
         <input type="submit" value="Send Message">
+        </div>
     </form>

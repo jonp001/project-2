@@ -3,19 +3,52 @@ nav{
     position: fixed;
     top: 0;
     left: 0;
+    height: 50px;
     width: 100%;
     padding: 20px 100px 0px 50px; 
     background-color:  #42ee5e;
     display: flex;  
+    align-items: center ;
+
+  }
+nav > form {
+  display: flex;
+  align-items: center;
+
 }
 
 nav>a{
-  top:50px;
+  position: relative;
+  top:-5px;
   right: 20px;
   font-weight: bold;
   text-decoration: none;
+
 }
 
+nav>a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #FFFFFF; 
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+
+}
+
+nav>a:hover::after {
+  visibility: visible;
+  width: 100%;
+
+}
+
+#logoutButton{
+  right: 40px; 
+
+}
 body{
   padding-top: 110px;
   padding-bottom: 50px;
@@ -29,25 +62,101 @@ body{
 #logoImg{
   position:relative;
   padding-left: 20px;
-  left: -50px;
-  top:0;
+  left: -30px;
+  top:-10px;
   height: 90px;
   width: 90px;
   display:flex;
   justify-content: flex-start;
  
-
 }
 
 
 a{
+  
     color: whitesmoke;
     padding: 10px;
     flex-direction: row;
     justify-content: space-between;
    
 }
+.loginBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
 
+.login-container {
+  display: flex;
+  align-items: center;
+  width: 300px; 
+  padding: 20px;
+  background-color: #42ee5e;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.signup-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.signup-container {
+  display: flex;
+  align-items: center;
+  width: 300px; 
+  padding: 20px;
+  background-color: #42ee5e;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.newbike-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.newbike-container {
+  display: flex;
+  align-items: center;
+  width: 300px; 
+  padding: 20px;
+  background-color: #42ee5e;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.newaccessory-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.newaccessory-container {
+  display: flex;
+  align-items: center;
+  width: 300px; 
+  padding: 20px;
+  background-color: #42ee5e;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.newmessage-container {
+  display: flex;
+  align-items: center;
+  width: 300px; 
+  padding: 20px;
+  background-color: #42ee5e;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
 .button {
     display: inline-block;
     justify-content: space-between;
