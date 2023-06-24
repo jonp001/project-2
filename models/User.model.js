@@ -40,7 +40,7 @@ const userSchema = new Schema(
       ref: "Bicycle"
     },
 
-    favoriteAccesory: {
+    favoriteAccessory: {
       type: [mongoose.Types.ObjectId],
       ref: "Accessory"
     },
@@ -50,7 +50,7 @@ const userSchema = new Schema(
       ref: "Bicycle"
     },
 
-    sellingAccesory: {
+    sellingAccessory: {
       type: [mongoose.Types.ObjectId],
       ref: "Accessory"
     },
