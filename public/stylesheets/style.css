@@ -1,18 +1,32 @@
 
 nav{
-    padding: 10px;
-    background-color: #a3a97d;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    background-color:  #42ee5e;
+    display: flex;
+    
+    
+    
   
 }
 
 body{
-    padding: 20px;
+    padding: 50px;
     font:  15px "Lucida Grande", Helvetica, Arial, sans-serif;
-    background-color: lightgrey
+    background-color: lightgrey;
+    /* background-image: url(../pictures/frontPageCover.png); */
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+
+    
 }
 
 a{
-    color: black;
+    color: whitesmoke;
     padding: 10px;
     flex-direction: row;
     justify-content: space-between;
